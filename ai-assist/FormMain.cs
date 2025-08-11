@@ -22,8 +22,13 @@ namespace ai_assist
 
         private async void buttonUserPromptSubmit_Click(object sender, EventArgs e)
         {
+            await SubmitUserPromptAsync();
+        }
+
+        private async Task SubmitUserPromptAsync()
+        {
             var userPrompt = textBoxUserPrompt.Text.Trim();
-            textBoxUserPrompt.ResetText();
+            textBoxUserPrompt.Clear();
 
             if (_openAIClient != null && userPrompt != "")
             {
@@ -33,9 +38,28 @@ namespace ai_assist
                     textBoxChat.AppendText(chunk);
                     textBoxChat.SelectionStart = textBoxChat.Text.Length;
                     textBoxChat.ScrollToCaret();
-
                 }
                 textBoxChat.AppendText("\r\n\r\n");
+            }
+        }
+
+        private async void textBoxUserPrompt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (e.Control)
+                {
+                    // Ctrl+Enter = insert newline
+                    // Let the TextBox handle it normally (do nothing)
+                }
+                else
+                {
+                    // Enter alone = submit
+                    e.SuppressKeyPress = true; // prevent newline
+
+                    // Call submit method (async-safe)
+                    _ = SubmitUserPromptAsync();
+                }
             }
         }
     }
