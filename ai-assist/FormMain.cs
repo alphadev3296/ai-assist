@@ -35,7 +35,9 @@ namespace ai_assist
                 textBoxChat.AppendText("[User]\r\n" + userPrompt + " \r\n\r\n[Assistant]\r\n");
                 await foreach (var chunk in _openAIClient.ChatCompletionStreamAsync(userPrompt))
                 {
-                    textBoxChat.AppendText(chunk);
+                    var formatted = chunk.Replace("\r", "");
+                    formatted = formatted.Replace("\n", "\r\n");
+                    textBoxChat.AppendText(formatted);
                     textBoxChat.SelectionStart = textBoxChat.Text.Length;
                     textBoxChat.ScrollToCaret();
                 }
