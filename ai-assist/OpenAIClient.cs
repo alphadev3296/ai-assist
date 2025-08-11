@@ -31,6 +31,7 @@ namespace ai_assist
             _maxTokens = maxContextTokens;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "OpenAI-DotNet-Client/1.0");
         }
 
         /// <summary>
