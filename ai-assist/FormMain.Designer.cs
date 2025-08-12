@@ -42,21 +42,20 @@
             // 
             // textBoxUserPrompt
             // 
-            this.textBoxUserPrompt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUserPrompt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxUserPrompt.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxUserPrompt.Location = new System.Drawing.Point(0, 0);
             this.textBoxUserPrompt.Multiline = true;
             this.textBoxUserPrompt.Name = "textBoxUserPrompt";
             this.textBoxUserPrompt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxUserPrompt.Size = new System.Drawing.Size(709, 102);
+            this.textBoxUserPrompt.Size = new System.Drawing.Size(685, 102);
             this.textBoxUserPrompt.TabIndex = 1;
             this.textBoxUserPrompt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserPrompt_KeyDown);
             // 
             // buttonUserPromptSubmit
             // 
             this.buttonUserPromptSubmit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonUserPromptSubmit.Location = new System.Drawing.Point(709, 0);
+            this.buttonUserPromptSubmit.Location = new System.Drawing.Point(685, 0);
             this.buttonUserPromptSubmit.Name = "buttonUserPromptSubmit";
             this.buttonUserPromptSubmit.Size = new System.Drawing.Size(75, 102);
             this.buttonUserPromptSubmit.TabIndex = 2;
@@ -69,14 +68,13 @@
             this.panelChat.Controls.Add(this.textBoxChat);
             this.panelChat.Controls.Add(this.panelTop);
             this.panelChat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChat.Location = new System.Drawing.Point(0, 0);
+            this.panelChat.Location = new System.Drawing.Point(12, 12);
             this.panelChat.Name = "panelChat";
-            this.panelChat.Size = new System.Drawing.Size(784, 309);
+            this.panelChat.Size = new System.Drawing.Size(760, 285);
             this.panelChat.TabIndex = 3;
             // 
             // textBoxChat
             // 
-            this.textBoxChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxChat.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxChat.Location = new System.Drawing.Point(0, 48);
@@ -84,7 +82,7 @@
             this.textBoxChat.Name = "textBoxChat";
             this.textBoxChat.ReadOnly = true;
             this.textBoxChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxChat.Size = new System.Drawing.Size(784, 261);
+            this.textBoxChat.Size = new System.Drawing.Size(760, 237);
             this.textBoxChat.TabIndex = 1;
             this.textBoxChat.TabStop = false;
             // 
@@ -94,7 +92,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(784, 48);
+            this.panelTop.Size = new System.Drawing.Size(760, 48);
             this.panelTop.TabIndex = 2;
             // 
             // buttonClearHistory
@@ -112,9 +110,9 @@
             this.panelBottom.Controls.Add(this.textBoxUserPrompt);
             this.panelBottom.Controls.Add(this.buttonUserPromptSubmit);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 309);
+            this.panelBottom.Location = new System.Drawing.Point(12, 297);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(784, 102);
+            this.panelBottom.Size = new System.Drawing.Size(760, 102);
             this.panelBottom.TabIndex = 4;
             // 
             // FormMain
@@ -125,6 +123,7 @@
             this.Controls.Add(this.panelChat);
             this.Controls.Add(this.panelBottom);
             this.Name = "FormMain";
+            this.Padding = new System.Windows.Forms.Padding(12);
             this.Text = "AI Assistant";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
