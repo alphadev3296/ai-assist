@@ -20,28 +20,56 @@ namespace ai_assist
             await JsonConfig<Config>.SaveAsync("settings.json", _config);
         }
 
-        private async void buttonUserPromptSubmit_Click(object sender, EventArgs e)
+        private void buttonUserPromptSubmit_Click(object sender, EventArgs e)
         {
-            await SubmitUserPromptAsync();
+            SubmitUserPromptAsync();
         }
 
-        private async Task SubmitUserPromptAsync()
+        private void SubmitUserPromptAsync()
         {
             var userPrompt = textBoxUserPrompt.Text.Trim();
             textBoxUserPrompt.Clear();
 
             if (_openAIClient != null && userPrompt != "")
             {
+                // Append user's message on UI thread
                 textBoxChat.AppendText("[User]\r\n" + userPrompt + " \r\n\r\n[Assistant]\r\n");
-                await foreach (var chunk in _openAIClient.ChatCompletionStreamAsync(userPrompt))
+
+                // Run streaming in a separate thread
+                Thread thread = new Thread(async () =>
                 {
-                    var formatted = chunk.Replace("\r", "");
-                    formatted = formatted.Replace("\n", "\r\n");
-                    textBoxChat.AppendText(formatted);
-                    textBoxChat.SelectionStart = textBoxChat.Text.Length;
-                    textBoxChat.ScrollToCaret();
-                }
-                textBoxChat.AppendText("\r\n\r\n================================\r\n\r\n");
+                    try
+                    {
+                        await foreach (var chunk in _openAIClient.ChatCompletionStreamAsync(userPrompt))
+                        {
+                            var formatted = chunk.Replace("\r", "").Replace("\n", "\r\n");
+
+                            // Update UI from the thread
+                            this.Invoke((Action)(() =>
+                            {
+                                textBoxChat.AppendText(formatted);
+                                textBoxChat.SelectionStart = textBoxChat.Text.Length;
+                                textBoxChat.ScrollToCaret();
+                            }));
+                        }
+
+                        // Append separator line
+                        this.Invoke((Action)(() =>
+                        {
+                            textBoxChat.AppendText("\r\n\r\n================================\r\n\r\n");
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        this.Invoke((Action)(() =>
+                        {
+                            textBoxChat.AppendText($"\r\n[Error] {ex.Message}\r\n");
+                        }));
+                    }
+                });
+
+                thread.IsBackground = true;
+                thread.Start();
             }
         }
 
@@ -59,8 +87,8 @@ namespace ai_assist
                     // Enter alone = submit
                     e.SuppressKeyPress = true; // prevent newline
 
-                    // Call submit method (async-safe)
-                    _ = SubmitUserPromptAsync();
+                    // Call submit method
+                    SubmitUserPromptAsync();
                 }
             }
         }

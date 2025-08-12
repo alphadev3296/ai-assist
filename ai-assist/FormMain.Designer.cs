@@ -41,7 +41,7 @@
             // 
             this.textBoxUserPrompt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUserPrompt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxUserPrompt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxUserPrompt.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxUserPrompt.Location = new System.Drawing.Point(0, 0);
             this.textBoxUserPrompt.Multiline = true;
             this.textBoxUserPrompt.Name = "textBoxUserPrompt";
