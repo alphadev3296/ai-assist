@@ -74,7 +74,7 @@
             // 
             this.textBoxChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxChat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxChat.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxChat.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxChat.Location = new System.Drawing.Point(0, 0);
             this.textBoxChat.Multiline = true;
             this.textBoxChat.Name = "textBoxChat";

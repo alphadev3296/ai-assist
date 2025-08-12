@@ -41,7 +41,7 @@ namespace ai_assist
                     textBoxChat.SelectionStart = textBoxChat.Text.Length;
                     textBoxChat.ScrollToCaret();
                 }
-                textBoxChat.AppendText("\r\n\r\n");
+                textBoxChat.AppendText("\r\n\r\n================================\r\n\r\n");
             }
         }
 
@@ -49,9 +49,9 @@ namespace ai_assist
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (e.Control)
+                if (e.Shift)
                 {
-                    // Ctrl+Enter = insert newline
+                    // Shift+Enter = insert newline
                     // Let the TextBox handle it normally (do nothing)
                 }
                 else
