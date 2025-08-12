@@ -32,8 +32,11 @@
             this.buttonUserPromptSubmit = new System.Windows.Forms.Button();
             this.panelChat = new System.Windows.Forms.Panel();
             this.textBoxChat = new System.Windows.Forms.TextBox();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.buttonClearHistory = new System.Windows.Forms.Button();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.panelChat.SuspendLayout();
+            this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +49,7 @@
             this.textBoxUserPrompt.Multiline = true;
             this.textBoxUserPrompt.Name = "textBoxUserPrompt";
             this.textBoxUserPrompt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxUserPrompt.Size = new System.Drawing.Size(709, 62);
+            this.textBoxUserPrompt.Size = new System.Drawing.Size(709, 102);
             this.textBoxUserPrompt.TabIndex = 1;
             this.textBoxUserPrompt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserPrompt_KeyDown);
             // 
@@ -55,7 +58,7 @@
             this.buttonUserPromptSubmit.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonUserPromptSubmit.Location = new System.Drawing.Point(709, 0);
             this.buttonUserPromptSubmit.Name = "buttonUserPromptSubmit";
-            this.buttonUserPromptSubmit.Size = new System.Drawing.Size(75, 62);
+            this.buttonUserPromptSubmit.Size = new System.Drawing.Size(75, 102);
             this.buttonUserPromptSubmit.TabIndex = 2;
             this.buttonUserPromptSubmit.Text = "Submit";
             this.buttonUserPromptSubmit.UseVisualStyleBackColor = true;
@@ -64,10 +67,11 @@
             // panelChat
             // 
             this.panelChat.Controls.Add(this.textBoxChat);
+            this.panelChat.Controls.Add(this.panelTop);
             this.panelChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChat.Location = new System.Drawing.Point(0, 0);
             this.panelChat.Name = "panelChat";
-            this.panelChat.Size = new System.Drawing.Size(784, 349);
+            this.panelChat.Size = new System.Drawing.Size(784, 309);
             this.panelChat.TabIndex = 3;
             // 
             // textBoxChat
@@ -75,23 +79,42 @@
             this.textBoxChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxChat.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxChat.Location = new System.Drawing.Point(0, 0);
+            this.textBoxChat.Location = new System.Drawing.Point(0, 48);
             this.textBoxChat.Multiline = true;
             this.textBoxChat.Name = "textBoxChat";
             this.textBoxChat.ReadOnly = true;
             this.textBoxChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxChat.Size = new System.Drawing.Size(784, 349);
+            this.textBoxChat.Size = new System.Drawing.Size(784, 261);
             this.textBoxChat.TabIndex = 1;
             this.textBoxChat.TabStop = false;
+            // 
+            // panelTop
+            // 
+            this.panelTop.Controls.Add(this.buttonClearHistory);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(784, 48);
+            this.panelTop.TabIndex = 2;
+            // 
+            // buttonClearHistory
+            // 
+            this.buttonClearHistory.Location = new System.Drawing.Point(6, 12);
+            this.buttonClearHistory.Name = "buttonClearHistory";
+            this.buttonClearHistory.Size = new System.Drawing.Size(98, 23);
+            this.buttonClearHistory.TabIndex = 3;
+            this.buttonClearHistory.Text = "Clear History";
+            this.buttonClearHistory.UseVisualStyleBackColor = true;
+            this.buttonClearHistory.Click += new System.EventHandler(this.buttonClearHistory_Click);
             // 
             // panelBottom
             // 
             this.panelBottom.Controls.Add(this.textBoxUserPrompt);
             this.panelBottom.Controls.Add(this.buttonUserPromptSubmit);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 349);
+            this.panelBottom.Location = new System.Drawing.Point(0, 309);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(784, 62);
+            this.panelBottom.Size = new System.Drawing.Size(784, 102);
             this.panelBottom.TabIndex = 4;
             // 
             // FormMain
@@ -107,6 +130,7 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.panelChat.ResumeLayout(false);
             this.panelChat.PerformLayout();
+            this.panelTop.ResumeLayout(false);
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
@@ -119,5 +143,7 @@
         private Panel panelChat;
         private TextBox textBoxChat;
         private Panel panelBottom;
+        private Panel panelTop;
+        private Button buttonClearHistory;
     }
 }

@@ -13,6 +13,8 @@ namespace ai_assist
         {
             _config = await JsonConfig<Config>.LoadAsync("settings.json");
             _openAIClient = new OpenAIClient(_config.OpenAIApiKey, _config.OpenAIModel, _config.OpenAIMaxContextTokens);
+            textBoxChat.Text = "Hi there! What can I assist you today?\r\n\r\n";
+            textBoxUserPrompt.Focus();
         }
 
         private async void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,6 +93,13 @@ namespace ai_assist
                     SubmitUserPromptAsync();
                 }
             }
+        }
+
+        private void buttonClearHistory_Click(object sender, EventArgs e)
+        {
+            _openAIClient.ClearContext();
+            textBoxChat.Text = "Hi there! What can I assist you today?\r\n\r\n";
+            textBoxUserPrompt.Focus();
         }
     }
 }
